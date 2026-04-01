@@ -1,16 +1,159 @@
-# React + Vite
+# 🎮 Smart Tic Tac Toe (Ultimate Tic-Tac-Toe)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive **Ultimate Tic-Tac-Toe game** built using **React + Zustand + Tailwind CSS**, featuring multi-board gameplay, dynamic move constraints, player customization, and a clean UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Features
 
-## React Compiler
+✨ **Multi-Board Gameplay**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 9 interconnected Tic-Tac-Toe boards (Ultimate version)
+* Each move determines the opponent’s next board
 
-## Expanding the ESLint configuration
+👥 **Custom Player Names**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Enter player names before starting
+* Dynamic turn display using player names
+
+🎯 **Smart Game Logic**
+
+* Active board restriction system
+* Automatic fallback when board is full
+
+🏆 **Winner Detection**
+
+* Small board winner tracking
+* Global winner calculation across boards
+
+🔊 **Sound Effects**
+
+* Click sound on valid moves
+* Smooth and responsive interaction
+
+🎨 **Modern UI/UX**
+
+* Responsive layout using Tailwind CSS
+* Clean grid-based design
+* Highlighted active board
+
+---
+
+## 🛠️ Tech Stack
+
+| Category         | Technology                   |
+| ---------------- | ---------------------------- |
+| Frontend         | React (Vite)                 |
+| Styling          | Tailwind CSS                 |
+| State Management | Zustand                      |
+| Logic            | JavaScript (Game Algorithms) |
+
+---
+
+## 📁 Project Structure
+
+```
+smart-tic-tac-toe/
+│
+├── public/
+│   ├── images/
+│   ├── sounds/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Game.jsx
+│   │   ├── Board.jsx
+│   │   ├── Cell.jsx
+│   │   ├── PlayerForm.jsx
+│   │
+│   ├── store/
+│   │   └── gameStore.js
+│   │
+│   ├── utils/
+│   │   └── winner.js
+│   │
+│   ├── styles/
+│   │   └── index.css
+│
+├── index.html
+├── package.json
+├── vite.config.js
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/your-username/smart-tic-tac-toe.git
+
+# Navigate into project
+cd smart-tic-tac-toe
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+---
+
+## 🧠 How It Works
+
+* Each player takes turns placing **X or O**
+* The position of a move determines the next board
+* Winning a small board claims it
+* Winning 3 boards in a row wins the game
+
+---
+
+## 🖼️ Screenshots
+
+> Add your screenshots here 👇
+> (UI, gameplay, player input)
+
+---
+
+## 📌 Key Highlights
+
+* 🔥 Advanced state management using Zustand
+* 🎯 Complex game logic with nested board structure
+* ⚡ Optimized rendering with React
+* 🎨 Clean UI with Tailwind CSS
+
+---
+
+## 🚀 Future Improvements
+
+* 🤖 AI Opponent (Minimax Algorithm)
+* 🌐 Online Multiplayer (Socket.IO)
+* 🏆 Score Tracking System
+* 🎭 Animations & Transitions
+* 📱 Mobile Optimization
+
+---
+
+## 🙌 Author
+
+👩‍💻 **Sonali Jena**
+
+* GitHub: https://github.com/sonalidevloper
+* LinkedIn: (Add your profile)
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+👉 Give it a ⭐ on GitHub
+👉 Share it on LinkedIn
+
+---
+
+## 📜 License
+
+This project is open-source and available under the MIT License.
