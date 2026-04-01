@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { checkWinner } from "../utils/winner";
 
-// 🔊 Load sound once (global instance)
+// 🔊 Load sound once
 const clickSound = new Audio("/sounds/click.mp3");
 clickSound.volume = 0.3;
 
@@ -13,31 +13,52 @@ export const useGameStore = create((set, get) => ({
   activeBoard: null,
   gameWinner: null,
 
+  // 👥 PLAYER DATA (NEW)
+  players: {
+    X: "Player 1",
+    O: "Player 2",
+  },
+
+  // 🎯 SET PLAYER NAMES (NEW)
+  setPlayers: (playerX, playerO) => {
+    set({
+      players: {
+        X: playerX || "Player 1",
+        O: playerO || "Player 2",
+      },
+    });
+  },
+
   // 🎮 MAKE MOVE
   makeMove: (boardIndex, cellIndex) => {
-    const { boards, currentPlayer, activeBoard, boardWinners, gameWinner } = get();
+    const {
+      boards,
+      currentPlayer,
+      activeBoard,
+      boardWinners,
+      gameWinner,
+    } = get();
 
-    // ❌ Stop if game already finished
+    // ❌ Stop if game finished
     if (gameWinner) return;
 
     // ❌ Enforce active board rule
     if (activeBoard !== null && activeBoard !== boardIndex) return;
 
-    // ❌ Cell already filled
+    // ❌ Prevent overwrite
     if (boards[boardIndex][cellIndex]) return;
 
-    // 🔊 PLAY SOUND (only on valid move)
+    // 🔊 SOUND
     try {
       clickSound.currentTime = 0;
       clickSound.play().catch((err) => {
-      console.log("Audio play blocked or failed:", err);
+        console.log("Audio play failed:", err);
       });
-
     } catch (err) {
-      console.log("Sound blocked:", err);
+      console.log("Sound error:", err);
     }
 
-    // 🧩 Create new board state (immutable update)
+    // 🧩 UPDATE BOARD
     const newBoards = boards.map((board, i) =>
       i === boardIndex
         ? board.map((cell, j) =>
@@ -46,24 +67,23 @@ export const useGameStore = create((set, get) => ({
         : board
     );
 
-    // 🏆 Check small board winner
+    // 🏆 SMALL BOARD WIN
     const newBoardWinners = [...boardWinners];
     if (checkWinner(newBoards[boardIndex])) {
       newBoardWinners[boardIndex] = currentPlayer;
     }
 
-    // 🌍 Check global winner
+    // 🌍 GLOBAL WIN
     const globalWinner = checkWinner(newBoardWinners);
 
-    // 🎯 Decide next active board
+    // 🎯 NEXT BOARD LOGIC
     let nextActiveBoard = cellIndex;
 
-    // If next board is full → free move anywhere
     if (newBoards[nextActiveBoard].every(cell => cell !== null)) {
       nextActiveBoard = null;
     }
 
-    // 🔄 Update state
+    // 🔄 UPDATE STATE
     set({
       boards: newBoards,
       boardWinners: newBoardWinners,
@@ -72,7 +92,6 @@ export const useGameStore = create((set, get) => ({
       gameWinner: globalWinner,
     });
   },
-  
 
   // 🔁 RESET GAME
   resetGame: () => {
@@ -82,6 +101,15 @@ export const useGameStore = create((set, get) => ({
       currentPlayer: "X",
       activeBoard: null,
       gameWinner: null,
+
+      // OPTIONAL: keep names OR reset
+      // Uncomment below if you want reset names also
+      /*
+      players: {
+        X: "Player 1",
+        O: "Player 2",
+      }
+      */
     });
   },
 }));
