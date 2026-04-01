@@ -1,6 +1,7 @@
 import { useGameStore } from "../store/gameStore";
 import Board from "./Board";
 import logo from "../assets/logo.png";
+import PlayerForm from "./PlayerForm";
 
 export default function Game() {
   const { boards, makeMove, activeBoard, gameWinner } = useGameStore();
