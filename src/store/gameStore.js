@@ -72,6 +72,7 @@ export const useGameStore = create((set, get) => ({
       gameWinner: globalWinner,
     });
   },
+  
 
   // 🔁 RESET GAME
   resetGame: () => {
