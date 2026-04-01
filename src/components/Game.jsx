@@ -7,13 +7,14 @@ export default function Game() {
   const { boards, makeMove, activeBoard, gameWinner } = useGameStore();
 
   return (
+    
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100"
       style={{
     backgroundImage: "url('/images/bg.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
->
+>     <PlayerForm />
       <img src={logo} className="w-80 mb-4" />
 
       <h1 className="text-3xl font-bold mb-6 text-white">
