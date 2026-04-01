@@ -5,7 +5,7 @@ export default function Board({ board, onMove, active }) {
     <div
       className={`
         grid grid-cols-3 gap-2 p-3 rounded-lg shadow-md
-        ${active ? "bg-white border-2 border-blue-500" : "bg-gray-200 opacity-60"}
+        ${active ? "bg-purple-200 border-2 border-red-500" : "bg-blue-300 opacity-60"}
       `}
     >
       {board.map((cell, i) => (

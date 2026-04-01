@@ -1,3 +1,5 @@
+import { checkWinner } from './checkWinner';
+
 export function minimax(board, isMaximizing) {
   const winner = checkWinner(board);
   if (winner === "X") return -10;

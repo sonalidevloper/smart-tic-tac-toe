@@ -13,12 +13,13 @@ export default function Game() {
     backgroundPosition: "center",
   }}
 >
-      <img src={logo} className="w-20 mb-4" />
+      <img src={logo} className="w-80 mb-4" />
 
-      <h1 className="text-3xl font-bold mb-6">Master Tic Tac Toe</h1>
-
+      <h1 className="text-3xl font-bold mb-6 text-white">
+        Smart Tic Tac Toe
+      </h1>
       {gameWinner && (
-        <h2 className="text-green-600 text-xl mb-4">
+        <h2 className="text-green-500 text-xl mb-4">
           Winner: {gameWinner}
         </h2>
       )}
