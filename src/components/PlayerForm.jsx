@@ -24,13 +24,7 @@ export default function PlayerForm() {
         value={player1}
         onChange={(e) => setPlayer1(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Player O Name"
-        className="p-2 border rounded"
-        value={player2}
-        onChange={(e) => setPlayer2(e.target.value)}
-      />
+      
       <button
         onClick={handleStart}
         className="bg-blue-500 text-white px-4 py-2 rounded"
